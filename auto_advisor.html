@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Advisor Using HTML</title>
+    <style>
+        .table,tr,td{
+            padding: 10px;
+            margin: 10px;
+        }
+        body
+        {
+            background-color:burlywood;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <nav> 
+        <b>New Student: </b> <button>New Student</button>&emsp;
+        <b>Existing Student: </b> <input type="file" name="inputfile" id="inputfile"><br><br>
+        <b>Save Records: </b> <button>Save</button>
+    </nav>
+    <br>
+    <hr>
+    <br>
+    <table class="table">
+        <tr>
+            <td>Select Term and Year: </td>
+            <td>
+                <select name="termyear">
+                    <option value="" selected disabled>SELECT</option>
+                    <option value="Fall 2021">Fall 2021</option>
+                    <option value="Spring 2022">Spring 2022</option>
+                    <option value="Fall 2022">Fall 2022</option>
+                    <option value="Spring 2023">Spring 2023</option>
+                </select>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Select Course :</td>
+            <td>
+                <select name="courses" id="courses">
+                    <option value="" selected disabled>SELECT</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Grade :</td>
+            <td>
+                <select name="grade" id="grade">
+                    <option value="" selected disabled>SELECT</option>
+                    <option value="10">A</option>
+                    <option value="9">B</option>
+                    <option value="8">C</option>
+                    <option value="7">D</option>
+                </select>
+            </td>
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="add_data()">Add</button>
+            </td>
+            
+        </tr>
+        
+    </table>
+    
+    <hr >
+   
+    <pre id="output"></pre>
+    <pre id="output1"></pre>
+      
+    <script type="text/javascript">
+        var data=[];
+        var temp=[];
+        document.getElementById('inputfile').addEventListener('change', function() 
+        {
+            var fr=new FileReader();
+            fr.onload=function(){
+                document.getElementById('output').textContent=fr.result;
+                
+                fr.result.split('\n').forEach(element => {
+                    data.push(element.split('|'))
+                });
+                window.alert(data);
+            }
+            fr.readAsText(this.files[0]);
+        })
+        function add_data(){
+            
+        }
+    </script>
+</body>
+</html>
